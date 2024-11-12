@@ -1,6 +1,6 @@
 all: 
-	mkdir -p /Users/elias/data/inception/mariadb
-	mkdir -p /Users/elias/data/inception/wordpress
+	sudo mkdir -p /Users/elias/data/mariadb
+	sudo mkdir -p /Users/elias/data/wordpress
 	docker compose -f ./srcs/docker-compose.yml build
 	docker compose -f ./srcs/docker-compose.yml up -d
 
@@ -11,11 +11,12 @@ logs:
 
 clean:
 	docker container stop nginx mariadb wordpress
+	docker container rm nginx mariadb wordpress
 	docker network rm inception
 
 fclean: clean
-	@sudo rm -rf /Users/elias/data/inception/mariadb/*
-	@sudo rm -rf /Users/elias/data/inception/wordpress/*
+	@sudo rm -rf /Users/elias/data/mariadb/*
+	@sudo rm -rf /Users/elias/data/wordpress/*
 	@docker system prune -af
 
 re: fclean all

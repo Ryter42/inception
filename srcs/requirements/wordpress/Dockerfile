@@ -25,6 +25,6 @@ EXPOSE 9000
 
 
 
-# ENTRYPOINT ["bash", "./wpscript.sh"]
+ENTRYPOINT ["bash", "./wpscript.sh"]
 
 # RUN ls -ld /var/www/html/wordpress && ls -l /var/www/html/wordpress
